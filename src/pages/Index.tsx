@@ -19,6 +19,12 @@ interface Post {
   };
   content: string;
   image?: string;
+  video?: string;
+  audio?: {
+    url: string;
+    title: string;
+    artist: string;
+  };
   likes: number;
   comments: number;
   shares: number;
@@ -100,6 +106,42 @@ export default function Index() {
       shares: 23,
       timestamp: '6 часов назад',
       liked: false
+    },
+    {
+      id: 4,
+      author: {
+        name: 'Максим Соловьев',
+        username: '@maxsol',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Maxim',
+        verified: true
+      },
+      content: 'Делюсь своим новым треком! Работал над ним последние два месяца. Надеюсь, вам понравится 🎵',
+      audio: {
+        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+        title: 'Summer Vibes',
+        artist: 'Максим Соловьев'
+      },
+      likes: 2341,
+      comments: 156,
+      shares: 89,
+      timestamp: '8 часов назад',
+      liked: false
+    },
+    {
+      id: 5,
+      author: {
+        name: 'Ирина Белова',
+        username: '@irinabelova',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Irina',
+        verified: true
+      },
+      content: 'Мой новый влог из путешествия по Байкалу! Невероятные пейзажи и эмоции 🏔️',
+      video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+      likes: 3567,
+      comments: 234,
+      shares: 145,
+      timestamp: '1 день назад',
+      liked: true
     }
   ]);
 
