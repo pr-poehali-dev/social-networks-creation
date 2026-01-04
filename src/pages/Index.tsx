@@ -8,6 +8,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
+import VideoPlayer from '@/components/VideoPlayer';
+import AudioPlayer from '@/components/AudioPlayer';
 
 interface Post {
   id: number;
@@ -381,40 +383,18 @@ export default function Index() {
                         )}
 
                         {post.video && (
-                          <div className="mt-4 rounded-xl overflow-hidden border border-purple-100 bg-black">
-                            <video 
-                              controls 
-                              className="w-full h-96 object-contain"
-                              preload="metadata"
-                            >
-                              <source src={post.video} type="video/mp4" />
-                              Ваш браузер не поддерживает видео
-                            </video>
+                          <div className="mt-4">
+                            <VideoPlayer src={post.video} />
                           </div>
                         )}
 
                         {post.audio && (
-                          <div className="mt-4 rounded-xl border border-purple-100 bg-gradient-to-br from-purple-50 to-pink-50 p-4">
-                            <div className="flex items-center gap-4 mb-3">
-                              <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center shrink-0">
-                                <Icon name="Music" size={28} className="text-white" />
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <h5 className="font-semibold truncate">{post.audio.title}</h5>
-                                <p className="text-sm text-muted-foreground truncate">{post.audio.artist}</p>
-                              </div>
-                            </div>
-                            <audio 
-                              controls 
-                              className="w-full h-10"
-                              preload="metadata"
-                              style={{
-                                filter: 'hue-rotate(260deg) saturate(1.5)',
-                              }}
-                            >
-                              <source src={post.audio.url} type="audio/mpeg" />
-                              Ваш браузер не поддерживает аудио
-                            </audio>
+                          <div className="mt-4">
+                            <AudioPlayer 
+                              src={post.audio.url} 
+                              title={post.audio.title} 
+                              artist={post.audio.artist}
+                            />
                           </div>
                         )}
 
